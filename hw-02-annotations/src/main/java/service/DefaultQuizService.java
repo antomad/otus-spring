@@ -16,13 +16,16 @@ public class DefaultQuizService implements QuizService {
     private Integer rate;
 
     private final PrintService printService;
+    private final QuestionService questionService;
 
-    public DefaultQuizService(PrintService printService) {
+    public DefaultQuizService(PrintService printService,
+                              QuestionService questionService) {
         this.printService = printService;
+        this.questionService = questionService;
     }
 
     @Override
-    public void doQuiz(List<Question> questions) {
+    public void doQuiz() {
 
         String surname;
         String name;
@@ -35,7 +38,7 @@ public class DefaultQuizService implements QuizService {
         System.out.println("Please enter your name: ");
         name = in.nextLine();
 
-        for (Question question : questions) {
+        for (Question question : questionService.getQuestions()) {
             printService.printQuestionAndVariants(question);
             int input;
             do {

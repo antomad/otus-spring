@@ -1,6 +1,5 @@
 import configuration.ApplicationConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import service.QuestionService;
 import service.QuizService;
 
 public class Application {
@@ -9,9 +8,6 @@ public class Application {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 
-        QuestionService questionService = context.getBean(QuestionService.class);
-        QuizService quizService = context.getBean(QuizService.class);
-
-        quizService.doQuiz(questionService.getQuestions());
+        context.getBean(QuizService.class).doQuiz();
     }
 }

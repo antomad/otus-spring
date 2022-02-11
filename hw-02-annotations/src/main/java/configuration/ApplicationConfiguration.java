@@ -27,7 +27,7 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    QuizService quizService() {
-        return new DefaultQuizService(printService());
+    QuizService quizService(QuestionService questionService) {
+        return new DefaultQuizService(printService(), questionService);
     }
 }
