@@ -1,7 +1,7 @@
 package service;
 
 import converter.StringListToQuestionConverter;
-import dao.CsvQuestionDao;
+import dao.FileQuestionDao;
 import dao.QuestionDao;
 import domain.Question;
 import org.junit.jupiter.api.Assertions;
@@ -22,7 +22,7 @@ class PrintServiceTest {
         this.fileDataReader = fileDataReader;
         this.converter = converter;
         this.printService = new ConsolePrintService();
-        this.questionDao = new CsvQuestionDao(this.fileDataReader, this.converter);
+        this.questionDao = new FileQuestionDao(this.fileDataReader, this.converter);
     }
 
     @Test

@@ -16,7 +16,7 @@ class QuestionDaoTest {
     QuestionDaoTest(FileDataReader fileDataReader, StringListToQuestionConverter converter) {
         this.fileDataReader = fileDataReader;
         this.converter = converter;
-        this.questionDao = new CsvQuestionDao(this.fileDataReader, this.converter);
+        this.questionDao = new FileQuestionDao(this.fileDataReader, this.converter);
     }
 
     @Test

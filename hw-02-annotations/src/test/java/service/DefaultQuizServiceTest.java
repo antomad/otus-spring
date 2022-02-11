@@ -1,7 +1,7 @@
 package service;
 
 import converter.StringListToQuestionConverter;
-import dao.CsvQuestionDao;
+import dao.FileQuestionDao;
 import dao.QuestionDao;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ class DefaultQuizServiceTest {
         PrintService printService = new ConsolePrintService();
         FileDataReader fileDataReader = new CsvFileDataReader();
         StringListToQuestionConverter converter = new StringListToQuestionConverter();
-        this.questionDao = new CsvQuestionDao(fileDataReader, converter);
+        this.questionDao = new FileQuestionDao(fileDataReader, converter);
         this.questionService = new DefaultQuestionService(questionDao);
         this.quizService = new DefaultQuizService(printService, questionService);
     }

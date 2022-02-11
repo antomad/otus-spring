@@ -1,7 +1,7 @@
 package configuration;
 
 import converter.StringListToQuestionConverter;
-import dao.CsvQuestionDao;
+import dao.FileQuestionDao;
 import dao.QuestionDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ import service.*;
 public class ApplicationConfiguration {
 
     @Bean
-    FileDataReader dataReader() {
+    FileDataReader fileDataReader() {
         return new CsvFileDataReader();
     }
 
@@ -25,7 +25,7 @@ public class ApplicationConfiguration {
     @Bean
     QuestionDao questionDao(FileDataReader fileDataReader,
                             StringListToQuestionConverter stringListToQuestionConverter) {
-        return new CsvQuestionDao(fileDataReader, stringListToQuestionConverter);
+        return new FileQuestionDao(fileDataReader, stringListToQuestionConverter);
     }
 
     @Bean
