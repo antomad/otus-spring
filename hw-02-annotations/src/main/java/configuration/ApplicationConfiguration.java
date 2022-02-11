@@ -1,5 +1,6 @@
 package configuration;
 
+import converter.StringListToQuestionConverter;
 import dao.CsvQuestionDao;
 import dao.QuestionDao;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +13,19 @@ import service.*;
 public class ApplicationConfiguration {
 
     @Bean
-    QuestionDao questionDao() {
-        return new CsvQuestionDao();
+    FileDataReader dataReader() {
+        return new CsvFileDataReader();
+    }
+
+    @Bean
+    StringListToQuestionConverter stringListToQuestionConverter() {
+        return new StringListToQuestionConverter();
+    }
+
+    @Bean
+    QuestionDao questionDao(FileDataReader fileDataReader,
+                            StringListToQuestionConverter stringListToQuestionConverter) {
+        return new CsvQuestionDao(fileDataReader, stringListToQuestionConverter);
     }
 
     @Bean

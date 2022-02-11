@@ -5,5 +5,5 @@ import domain.Question;
 import java.util.List;
 
 public interface QuestionDao {
-    List<Question> getAll();
+    List<Question> getAll(String fileName);
 }
